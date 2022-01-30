@@ -1529,11 +1529,7 @@ __declspec(safe) static inline uniform double rcp(uniform double v) {
 }
 
 __declspec(safe) static inline double rcp_fast(double v) {
-    if (__have_native_rcpd) {
-        return __rcp_fast_varying_double(v);
-    } else {
-        return __rcp_safe_varying_double(v);
-    }
+    return __rcp_safe_varying_double(v);
 }
 
 __declspec(safe) static inline uniform double rcp_fast(uniform double v) {
@@ -1545,10 +1541,7 @@ __declspec(safe) static inline uniform double rcp_fast(uniform double v) {
 }
 
 __declspec(safe) static inline float16 rcp(float16 v) {
-    if (__is_xe_target)
-        return __rcp_varying_half(v);
-    else
-        return (float16)(rcp((float)v));
+    return (float16)(rcp((float)v));
 }
 
 __declspec(safe) static inline uniform float16 rcp(uniform float16 v) {
